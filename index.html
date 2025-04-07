@@ -1,61 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Research Paper</title>
+  <!-- <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <title>Houston Fire Department</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="container">
     <div class="header">
-      <div class="title">Analysis of Data Patterns in [Research Domain]: Implications and Future Directions</div>
-      <div class="authors">Author Name<sup>1</sup>, Co-Author Name<sup>2</sup>, Additional Author<sup>1</sup></div>
-      <div class="affiliation"><sup>1</sup>Department of Research, University Name</div>
-      <div class="affiliation"><sup>2</sup>Institute of Advanced Studies, University Name</div>
-      <div class="date">April 7, 2025</div>
+      <div class="title">Accessing Houston Fire Department's Response Time: An Evaluation of Station's Efficiency and Resource Management</div>
+      <div class="authors">Brianna Hinds<sup>1</sup>, Jonathan Contreras<sup>2</sup>, Sam Ojo<sup>3</sup>, Noah Hlavinka<sup>4</sup>,</div>
+      <div class="affiliation"><sup>1</sup>Houston Christian University</div>
+      <div class="affiliation"><sup>2</sup>Houston Fire Department</div>
+      <div class="date">January-May 2025</div>
     </div>
     
     <div class="abstract-box">
       <div class="abstract-title">Abstract</div>
-      <p>This paper presents an analysis of emerging data patterns in [research domain]. Through rigorous examination of multiple datasets and application of statistical methods, we have identified several key trends that suggest significant implications for both theory and practice. Our findings indicate a strong correlation between [variable A] and [variable B], challenging previous assumptions in the field. Furthermore, we propose a novel framework for understanding these relationships, which may guide future research and practical applications in this domain.</p>
+      <p>The efficiency and effectiveness of emergency response systems are crucial in metropolitan areas where incidents can escalate rapidly and put lives at risk. As one of the most populous and diverse cities in the United States, Houston faces unique challenges in emergency response due to its sprawling urban landscape, complex road networks, and diverse socio-economic demographics. The Houston Fire Department (HFD), a vital component of the city’s public safety infrastructure, is tasked with providing rapid and reliable emergency response services across this expansive area. Given the increasing call volumes and the complexities introduced by urban development, it is imperative for HFD to continuously evaluate and enhance its response strategies. This project aims to bridge the gap between raw data and actionable insights by leveraging exploratory data analytics and visualization techniques. Our comprehensive analysis of HFD’s response data from 2019 to 2023 will provide a detailed examination of response trends, station performance, and the factors influencing response times. Ultimately, this study aims to support HFD in its mission to deliver timely and efficient emergency services, contributing to the overall safety and well-being of Houston’s residents</p>
     </div>
 
     <ul class="nav-tabs">
       <li><a href="#" class="tab-link active" data-target="introduction">Introduction</a></li>
-      <li><a href="#" class="tab-link" data-target="literature">Literature Review</a></li>
-      <li><a href="#" class="tab-link" data-target="methodology">Methodology</a></li>
-      <li><a href="#" class="tab-link" data-target="results">Results</a></li>
-      <li><a href="#" class="tab-link" data-target="discussion">Discussion</a></li>
-      <li><a href="#" class="tab-link" data-target="conclusion">Conclusion</a></li>
+      <li><a href="#" class="tab-link" data-target="data"> Data and Objectives</a></li>
+      <li><a href="#" class="tab-link" data-target="seasonalities">Call Seasonalities</a></li>
+      <li><a href="#" class="tab-link" data-target="gap">Gap Analysis</a></li>
+      <li><a href="#" class="tab-link" data-target="case_study">Case Study: Station 65</a></li>
+      <li><a href="#" class="tab-link" data-target="findings">Response Time Findings</a></li>
+      <li><a href="#" class="tab-link" data-target="key_insights">Key Insights from EDA</a></li>
+      <li><a href="#" class="tab-link" data-target="recommendations">Recommendations</a></li>
       <li><a href="#" class="tab-link" data-target="references">References</a></li>
     </ul>
 
     <div id="introduction" class="section active">
-      <h2>1. Introduction</h2>
-      <p>Recent advancements in [research domain] have highlighted the need for more comprehensive analysis of data patterns that emerge from [specific context]. While previous studies have examined isolated aspects of this phenomenon, there remains a significant gap in understanding the holistic nature of these patterns and their broader implications.</p>
-      <p>This research aims to address this gap by analyzing multiple datasets collected over a five-year period, employing both established and novel analytical methods. Our primary research questions are:</p>
-      <p>1. What are the predominant patterns that emerge from [specific data type] in the context of [research domain]?</p>
-      <p>2. How do these patterns correlate with established theoretical frameworks in the field?</p>
-      <p>3. What implications do these findings have for future research and practical applications?</p>
-      <p>By addressing these questions, this paper contributes to the growing body of literature on [research domain] and offers new insights that may guide both theoretical development and practical implementations in the field.</p>
+      <h2>Introduction</h2>
+      <p>The efficiency and effectiveness of emergency response systems are crucial in metropolitan areas where incidents can escalate rapidly and put lives at risk. As one of the most populous and diverse cities in the United States, Houston faces unique challenges in emergency response due to its sprawling urban landscape, complex road networks, and diverse socio-economic demographics. The Houston Fire Department (HFD), a vital component of the city’s public safety infrastructure, is tasked with providing rapid and reliable emergency response services across this expansive area.</p>
+
+      <div class="figure">
+        <img src="/Graphs/callsperyear.png" alt="Total Calls per Year">
+        <div class="figure-caption">Figure 1. Total Calls per Year (from First Arriver data)</div>
+      </div>
+
+      <p>Given the increasing call volumes (Fig 1) and the complexities introduced by urban development, it is imperative for HFD to continuously evaluate and enhance its response strategies. This project aims to bridge the gap between raw data and actionable insights by leveraging advanced data analytics, machine learning, and visualization techniques. Our comprehensive analysis of HFD’s response data from fiscal years 2019 to 2023 will provide a detailed examination of response trends, station performance, and the factors influencing response times. Ultimately, this study aims to support HFD in its mission to deliver timely and efficient emergency services, contributing to the overall safety and well-being of Houston’s residents.</p>
     </div>
 
-    <div id="literature" class="section">
-      <h2>2. Literature Review</h2>
-      <p>The study of data patterns in [research domain] has evolved significantly over the past two decades. Early research by Smith et al. (2010)<span class="citation">1</span> established the foundational principles for identifying and categorizing these patterns, while more recent studies have focused on specific applications and contextual factors.</p>
-      
-      <h3>2.1 Theoretical Frameworks</h3>
-      <p>Several theoretical frameworks have been proposed to explain the emergence and evolution of data patterns in this domain. Johnson's (2015)<span class="citation">2</span> Integrated Pattern Theory provides a comprehensive model that incorporates both structural and functional aspects of data organization. Similarly, the Dynamic Pattern Analysis framework developed by Chen and Wong (2018)<span class="citation">3</span> offers a temporal perspective that accounts for pattern shifts over time.</p>
-      
-      <h3>2.2 Empirical Studies</h3>
-      <p>Empirical research on this topic has yielded mixed results. A meta-analysis by Rodriguez et al. (2020)<span class="citation">4</span> found significant correlations between [variable A] and [variable B] across multiple studies, while Thompson's (2021)<span class="citation">5</span> longitudinal study revealed more complex relationships mediated by contextual factors. These inconsistencies highlight the need for more nuanced analytical approaches.</p>
-      
-      <h3>2.3 Gaps in Current Literature</h3>
-      <p>Despite these advances, several gaps remain in the current literature. First, most studies have focused on either micro or macro-level patterns, with few attempts to integrate these perspectives. Second, methodological limitations, particularly in terms of data sampling and analysis techniques, have hindered the generalizability of findings. Finally, there is limited research on how these patterns manifest in diverse cultural and organizational contexts.</p>
+    <div id="data" class="section">
+      <h2>Data</h2>
+      <p>The data (given in .csv format) used for this analysis was provided by Leonard Chan, Houston Fire Department’s Accreditation Manager. Below is each dataset provided and what specifically the data was used for:</p>
+      <dl>
+        <dt>Unit Performance Data for 2023 (all 4 quarters)</dt>
+        <dd>- This dataset was used to get the specific information about incident calls for the year 2023 (e.g. what type of unit responded, what order stations got to a specific call, etc.). Specifically this dataset was used during the querying of our data.</dd>
+        <dt>First Arriver Performance Data for 2019-2023</dt>
+        <dd>- This dataset was used to build all of our graphs since it included information about station response time metrics (e.g. location, dates, length of travel, type of call, etc.)</dd>
+      </dl>
+
+      <br>
+      <br>
+
+      <h2>Research Objectives</h2>
+      <p>The objectives of this project are designed to address the key operational challenges faced by the Houston Fire Department, focusing on data-driven solutions to improve response times and service delivery. These objectives include:</p>
+<!-- INCLUDE BULLET POITNS HERE -->
+
+      <ul>
+        <li><strong>Comprehensive Data Integration and Cleaning</strong>: To gather, integrate, and preprocess response data from fiscal years 2019 through 2023. This step involves consolidating disparate datasets, han	dling missing values, and standardizing variables to create a robust foundation for analysis.</li>
+        <li><strong>In-depth Exploratory Data Analysis (EDA)</strong>: To conduct a thorough EDA, identifying trends and anomalies in response times across different incident types, periods, and geographic locations.</li>
+        <li><strong>Enhanced Data Visualization</strong>: To create clear, insightful visualizations that communicate complex patterns and trends to stakeholders effectively. Tools like heat maps, bar charts, and geospatial plots will be utilized to make the data accessible and understandable for decision-makers.</li>
+        <li><strong>Indentfication of Operational Bottlenecks</strong>: To pinpoint specific stations, times, and incident types that are associated with longer response times. This analysis will highlight areas that require targeted interventions or resource adjustments.</li>
+        <li><strong>Actionable Recommendations</strong>: To formulate practical recommendations based on the analysis findings. This could include adjusting shift schedules during peak call times, enhancing coverage in high-demand areas, or implementing advanced traffic management systems.</li>
+    </ul>
+
+      <p>Our analysis uses two metrics to measure the Houston Fire Department's response time. First, we use the aggregate median response time of all fire stations from 2019-2023 and we also use the 90th percentile value of each station’s response time to compare to the City of Houston’s city council target response time benchmark. What we explicitly mean by “response time” is the time from when a station engine leaves the station to when it arrives at the incident. When plotting the distribution of all the response times from the dataset, the data is positively skewed (Fig 2). This means the average response time is higher than the middle response time value, skewing the distribution towards higher values. So there are longer response times (i.e. 150 minutes) pulling the mean upwards. To combat this, we will use the median to describe the “typical” value in the middle of the dataset, this gives a more accurate representation of where the outliers are.</p>
+
+      <div class="figure">
+        <img src="/Graphs/reason_for_median.png" alt="Distribution of Response Times">
+        <div class="figure-caption">Figure 2. Distribution of Response Time</div>
+      </div>
     </div>
 
-    <div id="methodology" class="section">
+    <div id="seasonalities" class="section">
       <h2>3. Methodology</h2>
       <p>This study employed a mixed-methods approach to analyze data patterns in [research domain]. The research design integrated quantitative analysis of large datasets with qualitative insights derived from focused case studies.</p>
       
@@ -102,7 +126,7 @@
       </table>
     </div>
 
-    <div id="results" class="section">
+    <div id="gap" class="section">
       <h2>4. Results</h2>
       <p>Our analysis revealed several significant patterns in the data, with implications for both theory and practice in [research domain].</p>
       
@@ -132,7 +156,7 @@
       <p>Multiple regression analysis indicated that these contextual factors explained approximately 62% of the variance in pattern expression (adjusted R² = 0.62).</p>
     </div>
 
-    <div id="discussion" class="section">
+    <div id="case_study" class="section">
       <h2>5. Discussion</h2>
       <p>The patterns identified in this study offer several important insights for understanding data dynamics in [research domain].</p>
       
@@ -151,12 +175,28 @@
       <p>Future research should address these limitations by incorporating more diverse data sources, extending the temporal scope of analysis, and developing more sophisticated analytical techniques specifically designed for complex pattern detection. Additionally, comparative studies across different domains would help identify universal pattern principles versus domain-specific manifestations.</p>
     </div>
 
-    <div id="conclusion" class="section">
+    <div id="findings" class="section">
       <h2>6. Conclusion</h2>
       <p>This study has identified and analyzed significant data patterns in [research domain], contributing to both theoretical understanding and practical application in this field. The three primary patterns identified—cyclical, linear with deviations, and complex non-linear—demonstrate the multifaceted nature of data dynamics in this domain.</p>
       <p>The concept of pattern interaction, particularly the phenomena of amplification, dampening, and transformation, represents an important advancement in understanding how these patterns operate in real-world contexts. Furthermore, the identification of key contextual factors that moderate pattern expression provides a more nuanced framework for interpreting and responding to these patterns.</p>
       <p>While limitations exist, this research establishes a foundation for future studies that can further explore the complex nature of data patterns and their implications. As the field continues to evolve, the integration of diverse methodological approaches and theoretical perspectives will be essential for developing a comprehensive understanding of these phenomena.</p>
       <p>In conclusion, this research not only advances academic knowledge in [research domain] but also offers practical insights for organizations navigating the increasingly complex data landscape of the modern environment.</p>
+    </div>
+
+    <div id="key_insights" class="section">
+        <h2>6. Conclusion</h2>
+        <p>This study has identified and analyzed significant data patterns in [research domain], contributing to both theoretical understanding and practical application in this field. The three primary patterns identified—cyclical, linear with deviations, and complex non-linear—demonstrate the multifaceted nature of data dynamics in this domain.</p>
+        <p>The concept of pattern interaction, particularly the phenomena of amplification, dampening, and transformation, represents an important advancement in understanding how these patterns operate in real-world contexts. Furthermore, the identification of key contextual factors that moderate pattern expression provides a more nuanced framework for interpreting and responding to these patterns.</p>
+        <p>While limitations exist, this research establishes a foundation for future studies that can further explore the complex nature of data patterns and their implications. As the field continues to evolve, the integration of diverse methodological approaches and theoretical perspectives will be essential for developing a comprehensive understanding of these phenomena.</p>
+        <p>In conclusion, this research not only advances academic knowledge in [research domain] but also offers practical insights for organizations navigating the increasingly complex data landscape of the modern environment.</p>
+    </div>
+    
+    <div id="recommendations" class="section">
+        <h2>6. Conclusion</h2>
+        <p>This study has identified and analyzed significant data patterns in [research domain], contributing to both theoretical understanding and practical application in this field. The three primary patterns identified—cyclical, linear with deviations, and complex non-linear—demonstrate the multifaceted nature of data dynamics in this domain.</p>
+        <p>The concept of pattern interaction, particularly the phenomena of amplification, dampening, and transformation, represents an important advancement in understanding how these patterns operate in real-world contexts. Furthermore, the identification of key contextual factors that moderate pattern expression provides a more nuanced framework for interpreting and responding to these patterns.</p>
+        <p>While limitations exist, this research establishes a foundation for future studies that can further explore the complex nature of data patterns and their implications. As the field continues to evolve, the integration of diverse methodological approaches and theoretical perspectives will be essential for developing a comprehensive understanding of these phenomena.</p>
+        <p>In conclusion, this research not only advances academic knowledge in [research domain] but also offers practical insights for organizations navigating the increasingly complex data landscape of the modern environment.</p>
     </div>
 
     <div id="references" class="section">
