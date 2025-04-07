@@ -1,0 +1,180 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Times New Roman", Times, serif;
+  }
+  
+  body {
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .container {
+    background-color: white;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .authors {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .affiliation {
+    font-style: italic;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .date {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .abstract-box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 30px;
+    background-color: #f9f9f9;
+  }
+  
+  .abstract-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .nav-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 30px;
+  }
+  
+  .nav-tabs li {
+    margin-right: 5px;
+  }
+  
+  .nav-tabs a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    font-size: 14px;
+  }
+  
+  .nav-tabs a:hover {
+    background-color: #e1e1e1;
+  }
+  
+  .nav-tabs a.active {
+    background-color: white;
+    border-bottom: 1px solid white;
+    margin-bottom: -1px;
+    font-weight: bold;
+  }
+  
+  .section {
+    margin-bottom: 30px;
+    display: none;
+  }
+  
+  .section.active {
+    display: block;
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+  
+  h3 {
+    font-size: 18px;
+    margin: 20px 0 15px;
+  }
+  
+  p {
+    margin-bottom: 15px;
+    text-align: justify;
+  }
+  
+  .figure {
+    margin: 30px 0;
+    text-align: center;
+  }
+  
+  .figure img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+  }
+  
+  .figure-caption {
+    font-style: italic;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .citation {
+    font-size: 12px;
+    vertical-align: super;
+    color: #0066cc;
+  }
+  
+  .references {
+    margin-top: 40px;
+  }
+  
+  .references h2 {
+    margin-bottom: 20px;
+  }
+  
+  .reference-item {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    text-indent: -20px;
+    font-size: 14px;
+  }
