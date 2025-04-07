@@ -29,8 +29,8 @@
       <li><a href="#" class="tab-link" data-target="gap">Gap Analysis</a></li>
       <li><a href="#" class="tab-link" data-target="case_study">Case Study: Station 65</a></li>
       <li><a href="#" class="tab-link" data-target="findings">Response Time Findings</a></li>
-      <li><a href="#" class="tab-link" data-target="key_insights">Key Insights from EDA</a></li>
-      <li><a href="#" class="tab-link" data-target="recommendations">Recommendations</a></li>
+      <li><a href="#" class="tab-link" data-target="key_insights">Key Insights and Recommendations</a></li>
+      <li><a href="#" class="tab-link" data-target="additional_work">Additional Data Analysis</a></li>
       <li><a href="#" class="tab-link" data-target="summary_findings">Summary of Findings</a></li>
       <li><a href="#" class="tab-link" data-target="references">References</a></li>
     </ul>
@@ -128,76 +128,87 @@
     </div>
 
     <div id="gap" class="section">
-      <h2>4. Results</h2>
-      <p>Our analysis revealed several significant patterns in the data, with implications for both theory and practice in [research domain].</p>
-      
-      <h3>4.1 Primary Patterns</h3>
-      <p>Three primary patterns emerged from our analysis:</p>
-      <p><strong>Pattern A:</strong> Characterized by cyclical fluctuations with a periodicity of approximately 14 months, this pattern demonstrated strong correlation with [variable X] (r = 0.78, p < 0.001).</p>
-      <p><strong>Pattern B:</strong> Exhibited a linear trend with periodic deviations, particularly pronounced during [specific conditions]. This pattern was significantly associated with [variable Y] (β = 0.65, SE = 0.08).</p>
-      <p><strong>Pattern C:</strong> Displayed complex, non-linear characteristics with multiple inflection points. Machine learning models identified this pattern as highly predictive of [outcome Z] (accuracy = 87.3%).</p>
+      <h2>Gap Analysis</h2>
+      <p>With the Houston Fire Department being one of the largest in the United States, we wanted to identify and analyze any possible bottlenecks at specific stations that might negatively contribute to HFD’s overall response time analysis.</p>
+      <p>To effectively pinpoint potential bottlenecks within the Houston Fire Department's response times, we've moved beyond median values and focused on percentile analysis. Percentiles show a bigger picture by showing the distribution of response times. For example, the 90th percentile reveals the time within which 90% of calls are responded to, highlighting the upper range of typical response times and flagging stations where responses are consistently slower. By examining these higher percentiles, we can identify stations where a significant portion of responses exceed expected durations, signaling potential areas for improvement and resource optimization.</p>
+      <p>To analyze and access the upper range of typical response times, more specifically the 90th percentile response time for each station, Figure 9 and Figure 10 show the stations that are ranked from the longest 90th percentile response time on the left to the shortest 90th percentile response time on the right, based on fire calls and EMS/rescue calls. This metric represents the response time that was met or exceeded in only 10% of incidents. The red line in Figure 9 represents the City of Houston’s 90th percentile response time benchmark, specifically for fire calls. The green line in Figure 10 represents the City of Houston’s 90th percentile response time for EMS and rescue calls. These benchmarks are set by the city budget and services as a proxy of community expectations (Table 1).</p>
       
       <div class="figure">
-        <img src="/api/placeholder/600/400" alt="Data Pattern Visualization">
-        <div class="figure-caption">Figure 1. Visualization of the three primary patterns identified in the analysis. Pattern A (blue), Pattern B (red), and Pattern C (green) are shown across the five-year study period.</div>
+        <img src="/api/placeholder/600/400" alt="Houston FY2025 Benchmarks">
+        <div class="figure-caption">Table 1. City of Houston's FY2025 Benchmarks</div>
       </div>
+
+      <p><i>NOTE: All stations in the graph are non-airport, non-special stations. Station 22-Hazmat, Station 54, Station 99, Station 92, and Station 81 were all removed from the analysis because their call response is special. For example, Station 22 responds to hazmat-specific calls all over Houston because they are a hazmat station, and the other stations are airport stations, responding only to airport calls.</i></p>
       
-      <h3>4.2 Pattern Interactions</h3>
-      <p>Our analysis also revealed significant interactions between these primary patterns, particularly under [specific conditions]. These interactions manifested as:</p>
-      <p>- Amplification effects when Patterns A and B coincided temporally</p>
-      <p>- Dampening effects when Pattern C preceded Pattern A by 3-4 months</p>
-      <p>- Transformative effects resulting in novel pattern emergence when all three primary patterns converged</p>
-      
-      <h3>4.3 Contextual Factors</h3>
-      <p>Several contextual factors moderated the expression of these patterns, including:</p>
-      <p>- Organizational size and structure</p>
-      <p>- Industry sector and competitive dynamics</p>
-      <p>- Regulatory environment</p>
-      <p>- Technological infrastructure</p>
-      <p>Multiple regression analysis indicated that these contextual factors explained approximately 62% of the variance in pattern expression (adjusted R² = 0.62).</p>
+      <div class="figure">
+        <img src="Graphs/firecalls.png" alt="Bar Chart of 90th Percentile Response Times for Fire Calls">
+        <div class="figure-caption">Figure 9. Order Bar Chart of 90th Percentile Response Times for Fire Calls</div>
+      </div>
+
+      <p>Figure 9 shows that a little over half of the stations analyzed are above this benchmark. This indicates that there is a widespread performance gap in fire call response, showing that these delays are not isolated incidents but rather a systemic issue. Conversely, Figure 10 shows that only 15% of the 88 fire stations analyzed exceeded the 90th percentile response time benchmark for EMS calls. This stark contrast suggests that the factors contributing to response time delays are more prevalent in fire-related incidents. The fire stations demonstrate strong abilities to respond to medical emergencies promptly.</p>
+      <p>Station 65 stands out as the station with not only the highest 90th percentile response time for fire calls but also the highest 90th percentile value for EMS calls. To note, for fire calls, Station 65’s 90th percentile response time is 3 minutes longer than the next ranked station. This consistent pattern of elevated response time suggests an operational bottleneck or resource limitation specific to this station, which will be explored in the next section.</p>
+
+      <div class="figure">
+        <img src="Graphs/emscalls.png" alt="Bar Chart of 90th Percentile Response Times for EMS/Rescue Calls">
+        <div class="figure-caption">Figure 10. Order Bar Chart of 90th Percentile Response Times for EMS/Rescue Calls</div>
+      </div>
     </div>
 
     <div id="case_study" class="section">
-      <h2>5. Discussion</h2>
-      <p>The patterns identified in this study offer several important insights for understanding data dynamics in [research domain].</p>
+      <h2>Case Study: A Deep Dive into Station 65</h2>
+      <p>There were 88 stations in our dataset. To truly find the bottlenecks in how and why their response times differ, we need to compare stations that are at a measurable benchmark. From Figure 9 and Figure 10, the benchmark used is set by the city council for the city budget, allowing our analysis to have a consensus-based metric to analyze stations. Our case study covers the analysis of Station 65 compared to Station 28 (the station at the benchmark standard for fire calls) and Station 83 (the station at the benchmark standard for EMS calls). This section focuses more on graph visualizations and not the geography of station to incident.</p>
       
-      <h3>5.1 Theoretical Implications</h3>
-      <p>Our findings both support and extend existing theoretical frameworks. The cyclical nature of Pattern A aligns with Johnson's (2015)<span class="citation">2</span> Integrated Pattern Theory, particularly the concept of recursive pattern formation. However, the complex characteristics of Pattern C suggest limitations in current theoretical models, which predominantly assume linear or simple non-linear relationships.</p>
-      <p>We propose an extension to existing theories that incorporates the concept of "pattern resonance," which occurs when multiple patterns interact in ways that amplify or transform their individual expressions. This concept may help explain the emergent properties observed when patterns converge under specific contextual conditions.</p>
+      <h3>Fire Calls: Station 65 vs Station 28</h3>
+      <p>Station 65’s 90th percentile response time for fire calls is 17.1 minutes, while Station 28’s is 9.5 minutes. Why such a large contrast? The first thing we looked at was how many calls each station received throughout the years. And we see that consistently, Station 65 responds to significantly fewer calls than Station 28, but their 90th percentile response time throughout the years is always 3 to 4 minutes over Station 28 (Fig 11).</p>
+
+      <div class="figure">
+        <img src="Graphs/station65_station28.png" alt="Line Graph 90th Percentile Response Time and Call Frequency of Station 65 vs Station 28">
+        <div class="figure-caption">Figure 11. 90th Percentile Response Time and Call Frequency of Station 65 vs Station 28</div>
+      </div>
       
-      <h3>5.2 Practical Implications</h3>
-      <p>From a practical perspective, these findings suggest several strategies for organizations operating in [research domain]:</p>
-      <p>1. <strong>Predictive Monitoring:</strong> Organizations can develop monitoring systems that track early indicators of pattern emergence, particularly for Pattern A, which showed the strongest predictive relationship with [outcome variable].</p>
-      <p>2. <strong>Adaptive Response Mechanisms:</strong> Given the cyclical nature of Pattern A, organizations can develop rhythmic response mechanisms that align with these cycles.</p>
-      <p>3. <strong>Contextual Calibration:</strong> Our findings on contextual factors suggest that organizations should calibrate their strategies based on their specific contextual profile, rather than applying generic approaches.</p>
-      
-      <h3>5.3 Limitations and Future Research</h3>
-      <p>Several limitations should be noted. First, while our dataset was comprehensive, it was primarily drawn from [specific regions/industries], potentially limiting generalizability. Second, the five-year timeframe may not capture longer-term pattern evolutions. Finally, our analytical methods, while advanced, may not fully capture the most complex non-linear relationships.</p>
-      <p>Future research should address these limitations by incorporating more diverse data sources, extending the temporal scope of analysis, and developing more sophisticated analytical techniques specifically designed for complex pattern detection. Additionally, comparative studies across different domains would help identify universal pattern principles versus domain-specific manifestations.</p>
+      <h3>EMS/Rescue Calls: Station 65 vs Station 83</h3>
+      <p>Similarly, when comparing Station 65 and Station 83, we looked at how many calls each station received, and Station 65 received significantly fewer calls than Station 83 (Fig 12).</p>
+
+      <div class="figure">
+        <img src="Graphs/station65_station83.png" alt="Line Graph 90th Percentile Response Time and Call Frequency of Station 65 vs Station 83">
+        <div class="figure-caption">Figure 12. 90th Percentile Response Time and Call Frequency of Station 65 vs Station 83</div>
+      </div>
+
+      <p>So, despite handling significantly fewer calls compared to Station 28 and Station 83, Station 65 shows consistently higher response times, suggesting potential inefficiencies in its operational processes. This raises critical questions about the nature of the incidents Station 65 does respond to.</p>
     </div>
 
     <div id="findings" class="section">
-      <h2>6. Conclusion</h2>
-      <p>This study has identified and analyzed significant data patterns in [research domain], contributing to both theoretical understanding and practical application in this field. The three primary patterns identified—cyclical, linear with deviations, and complex non-linear—demonstrate the multifaceted nature of data dynamics in this domain.</p>
-      <p>The concept of pattern interaction, particularly the phenomena of amplification, dampening, and transformation, represents an important advancement in understanding how these patterns operate in real-world contexts. Furthermore, the identification of key contextual factors that moderate pattern expression provides a more nuanced framework for interpreting and responding to these patterns.</p>
-      <p>While limitations exist, this research establishes a foundation for future studies that can further explore the complex nature of data patterns and their implications. As the field continues to evolve, the integration of diverse methodological approaches and theoretical perspectives will be essential for developing a comprehensive understanding of these phenomena.</p>
-      <p>In conclusion, this research not only advances academic knowledge in [research domain] but also offers practical insights for organizations navigating the increasingly complex data landscape of the modern environment.</p>
+      <h2>Response Time Findings</h2>
+      <p>Digging deeper into the stations, we wanted to look at what other factors could possibly cause such a long response time for Station 65. Initially, we wanted to look at what calls Station 65 were responding to that took them the longest. For this analysis, we looked at Station 65’s incidents in the First Arriver dataset from 2023 and the top ten slowest response times (Fig 13).</p>
+
+      <div class="figure">
+        <img src="Graphs/slowest_station65.png" alt="Station 65's Lowest Responded Incidents in 2023">
+        <div class="figure-caption">Figure 13. Station 65's Lowest 10 Responded Incidents in 2023</div>
+      </div>
+
+      <p>The query output shows the longest response times for Station 65, including the type of call, when and where it occurred, how long it took them to respond, and what engine responded to that call.</p>
+      <p>Looking at the first call, a Truck Fire on December 15, 2023, an engine from the station was en route at 7:55 PM. It took them 37 minutes to respond, and when mapping the latitude and longitude of the call, it placed it near the station (Fig 14 and Fig 15). Looking at the latitude and longitude values of calls in Figure 13, the calls seem to be roughly in the same area.</p>
+      <p><i>NOTE: Looking at calls responded to from Station 65, calls that fall under psychiatric or domestic/assaults (calls that fall under EMS/Rescue) will have a lengthy response time because those calls usually start as police-related. The reason for this is that fire and EMS are allowed on the scene only when it is safe from violent actors before patient care is given.</i></p>
+      <p>One thing to talk about is the environment surrounding Station 65. It sits off of Farm Market 1960 Road over Lake Houston. The road is known for having bad traffic, especially during peak hours such as rush hour in the morning and the evening. This can also contribute to the lengthy response time for this station.</p>
+      <p><i>NOTE: While this section just covered what the data showed, further analysis and insight on call responses and the context surrounding the calls will need to be researched to give a specific reason as to why calls so close to the station are not being responded to promptly.</i></p>
     </div>
 
     <div id="key_insights" class="section">
-        <h2>6. Conclusion</h2>
-        <p>This study has identified and analyzed significant data patterns in [research domain], contributing to both theoretical understanding and practical application in this field. The three primary patterns identified—cyclical, linear with deviations, and complex non-linear—demonstrate the multifaceted nature of data dynamics in this domain.</p>
-        <p>The concept of pattern interaction, particularly the phenomena of amplification, dampening, and transformation, represents an important advancement in understanding how these patterns operate in real-world contexts. Furthermore, the identification of key contextual factors that moderate pattern expression provides a more nuanced framework for interpreting and responding to these patterns.</p>
-        <p>While limitations exist, this research establishes a foundation for future studies that can further explore the complex nature of data patterns and their implications. As the field continues to evolve, the integration of diverse methodological approaches and theoretical perspectives will be essential for developing a comprehensive understanding of these phenomena.</p>
-        <p>In conclusion, this research not only advances academic knowledge in [research domain] but also offers practical insights for organizations navigating the increasingly complex data landscape of the modern environment.</p>
+        <h2>Key Insights from EDA</h2>
+        <p>Our goal as data analysts is to create visualizations that not only display data but also drive actionable insights. The graphs presented here underscore a critical issue: specific fire stations are experiencing significant delays in responding to calls, demanding immediate attention and targeted interventions.</p>
+        <p><i>NOTE: Any recommendations having to do with resource/staff allocation and/or funding are at the discretion of the Houston City Council.</i></p>
+
+        <h3>Recommendations</h3>
+        <p>Based on the analysis of response times and station performance, we recommend the following:</p>
+        <ul>
+            <li><strong>Shift Scheduling</strong>: The analysis of the aggregate response times per hour of the day and the analysis of the worst responding stations reveal opportunities to optimize shift scheduling. Stations should consider implementing staggered shifts or overtime options to ensure adequate staffing during early morning hours and peak hours. Aligning staff availability with these patterns can significantly reduce response delays and improve efficiency.</li>
+            <li><strong>Prioritization</strong>: A system can be implemented to prioritize calls based on severity and potential impact. While all calls need to be responded to, there could be a greater focus on rapid responses for high-priority incidents, such as cardiac arrests, structure fires, and life-threatening car crashes.</li>
+        </ul>       
     </div>
     
-    <div id="recommendations" class="section">
-        <h2>6. Conclusion</h2>
-        <p>This study has identified and analyzed significant data patterns in [research domain], contributing to both theoretical understanding and practical application in this field. The three primary patterns identified—cyclical, linear with deviations, and complex non-linear—demonstrate the multifaceted nature of data dynamics in this domain.</p>
-        <p>The concept of pattern interaction, particularly the phenomena of amplification, dampening, and transformation, represents an important advancement in understanding how these patterns operate in real-world contexts. Furthermore, the identification of key contextual factors that moderate pattern expression provides a more nuanced framework for interpreting and responding to these patterns.</p>
-        <p>While limitations exist, this research establishes a foundation for future studies that can further explore the complex nature of data patterns and their implications. As the field continues to evolve, the integration of diverse methodological approaches and theoretical perspectives will be essential for developing a comprehensive understanding of these phenomena.</p>
-        <p>In conclusion, this research not only advances academic knowledge in [research domain] but also offers practical insights for organizations navigating the increasingly complex data landscape of the modern environment.</p>
+    <div id="additional_work" class="section">
+        <h2>Additional Data Analysis</h2>
+        <p>The scope of this research project has not been achieved to its entirety. While we have recommended actionable approaches to reduce the overall and individual station response times. Our findings about the station’s atypical long response times to nearby calls has opened a new Pandora’s Box of questions, needed data analysis, and further insight. This requires further investigation of data not yet provided.</p>
     </div>
 
     <div id="summary_findings" class="section">
@@ -213,7 +224,27 @@
 
         <h2>Gap Analysis Summary of Findings</h2>
         <ul>
-            <li></li>
+            <li>About 52% of the stations are above the City of Houston’s Fiscal Year 2025 targeted response time for fire calls.</li>
+            <li>About 15% of stations are above the City of Houston’s Fiscal Year 2025 targeted response time for EMS/Rescue calls of 12.9 minutes.</li>
+            <li>Station 65 stands out as the station with the highest values across both graphs, signifying the slowest response times and the most significant performance challenges.</li>
+        </ul>
+
+        <br>
+
+        <h2>Case Study Summary of Findings</h2>
+        <ul>
+            <li>Despite handling a significantly lower call volume compared to Station 83 and Station 28 across fire calls and EMS calls, Station 65 consistently shows a higher 90th percentile response time, indicating persistent delays.</li>
+            <li>This suggests that Station 65 might have internal operational inefficiencies, such as dispatch delays, slower turnout times, or inefficient routing.</li>
+            <li>Although they have fewer calls, they could be handling a higher proportion of complex incidents that require more time.</li>
+        </ul>
+
+        <br>
+
+        <h2>Response Time Summary of Findings</h2>
+        <ul>
+            <li>Looking at the top slowest response times, there seems to be an unusually high response time for calls that are near the station.</li>
+            <li>Call Type 3 (EMS/Rescue) is the most frequent type of call made to fire stations, so lowering these call responses will improve the performance of the station's response time.</li>
+            <li>Response times for Station 65 could be adversely affected by its placement on Farm Street 1960 Road, which experiences frequent traffic and congestion, potentially hindering timely arrival at incident scenes.</li>
         </ul>
     </div>
 
