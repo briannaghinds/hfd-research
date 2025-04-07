@@ -31,6 +31,7 @@
       <li><a href="#" class="tab-link" data-target="findings">Response Time Findings</a></li>
       <li><a href="#" class="tab-link" data-target="key_insights">Key Insights from EDA</a></li>
       <li><a href="#" class="tab-link" data-target="recommendations">Recommendations</a></li>
+      <li><a href="#" class="tab-link" data-target="summary_findings">Summary of Findings</a></li>
       <li><a href="#" class="tab-link" data-target="references">References</a></li>
     </ul>
 
@@ -39,7 +40,7 @@
       <p>The efficiency and effectiveness of emergency response systems are crucial in metropolitan areas where incidents can escalate rapidly and put lives at risk. As one of the most populous and diverse cities in the United States, Houston faces unique challenges in emergency response due to its sprawling urban landscape, complex road networks, and diverse socio-economic demographics. The Houston Fire Department (HFD), a vital component of the city’s public safety infrastructure, is tasked with providing rapid and reliable emergency response services across this expansive area.</p>
 
       <div class="figure">
-        <img src="/Graphs/callsperyear.png" alt="Total Calls per Year">
+        <img src="https://github.com/briannaghinds/hfd-research/blob/main/Graphs/callsperyear.png" alt="Total Calls per Year">
         <div class="figure-caption">Figure 1. Total Calls per Year (from First Arriver data)</div>
       </div>
 
@@ -61,8 +62,6 @@
 
       <h2>Research Objectives</h2>
       <p>The objectives of this project are designed to address the key operational challenges faced by the Houston Fire Department, focusing on data-driven solutions to improve response times and service delivery. These objectives include:</p>
-<!-- INCLUDE BULLET POITNS HERE -->
-
       <ul>
         <li><strong>Comprehensive Data Integration and Cleaning</strong>: To gather, integrate, and preprocess response data from fiscal years 2019 through 2023. This step involves consolidating disparate datasets, han	dling missing values, and standardizing variables to create a robust foundation for analysis.</li>
         <li><strong>In-depth Exploratory Data Analysis (EDA)</strong>: To conduct a thorough EDA, identifying trends and anomalies in response times across different incident types, periods, and geographic locations.</li>
@@ -74,13 +73,60 @@
       <p>Our analysis uses two metrics to measure the Houston Fire Department's response time. First, we use the aggregate median response time of all fire stations from 2019-2023 and we also use the 90th percentile value of each station’s response time to compare to the City of Houston’s city council target response time benchmark. What we explicitly mean by “response time” is the time from when a station engine leaves the station to when it arrives at the incident. When plotting the distribution of all the response times from the dataset, the data is positively skewed (Fig 2). This means the average response time is higher than the middle response time value, skewing the distribution towards higher values. So there are longer response times (i.e. 150 minutes) pulling the mean upwards. To combat this, we will use the median to describe the “typical” value in the middle of the dataset, this gives a more accurate representation of where the outliers are.</p>
 
       <div class="figure">
-        <img src="/Graphs/reason_for_median.png" alt="Distribution of Response Times">
+        <img src="https://github.com/briannaghinds/hfd-research/blob/main/Graphs/reason_for_median.png" alt="Distribution of Response Times">
         <div class="figure-caption">Figure 2. Distribution of Response Time</div>
       </div>
     </div>
 
     <div id="seasonalities" class="section">
-      <h2>3. Methodology</h2>
+      <h2>Call Seasonalities</h2>
+      <p>Call centers get a large swarm of calls day in and day out. We wanted to identify any seasonal patterns in the dataset for both call frequency and median response time. Houston is a notable city that hosts seasonal events attracting thousands of people, such as RodeoHouston, the Chevron Houston Marathon, and the seasons of various professional sports teams. Not only that, there are everyday seasonal activities of daily living; for example, we wanted to see if there is a spike in calls and response time from the school year versus the summertime.</p>
+      <p>Identifying specific time periods where fire stations across the Houston metropolitan area are operating with an influx of calls and responding to calls slower can allow us to build an action plan to help stations mitigate the weight of the inundation.</p>
+      <p>Part of our analysis focuses more on the “normal” distribution of the dataset. For this, we combined five years of call data into our study. Analyzing a normal dataset over an abnormal dataset (i.e. 2020 with COVID) gives us the ability to dissect what the data is telling us knowing there are little to no surprising factors that can skew the results.</p>
+
+      <div class="figure">
+        <img src="https://github.com/briannaghinds/hfd-research/blob/main/Graphs/callsdistributioncurve.png" alt="Distribution of All Calls from 2019-2023">
+        <div class="figure-caption">Figure 3. Distribution of All Calls from 2019-2023</div>
+      </div>
+
+      <p>Looking directly at the raw numbers, the number of calls that come in peaks more towards the months after the middle of the year (i.e. about  July to September) than it does towards the beginning of the year (Fig 3). This can be seen more explicitly in Figure 4, where there is a habitual dip in the number of calls stations receive during February. This can be possibly tied to the lesser number of days in February than in January. The higher call counts come in from June to September, either due to increased outdoor activity and/or hotter temperatures.</p>
+      <p><i>NOTE: On February 13-17, 2021, Texas was hit with a winter storm. This caused an unpredictable influx of calls. Because of this, this specific range of data has been omitted from the dataset, causing the lower call frequency for February 2021.</i></p>
+      <p>The year 2023 shows the highest call frequency out of all years, especially in July and August. During this time, Houston recorded record-breaking temperatures in July (an average of 87.8 degrees) and August (an average of 102.7 degrees).</p>
+      
+      <div class="figure">
+        <img src="https://github.com/briannaghinds/hfd-research/blob/main/Graphs/callfrequency.png" alt="Monthly Call Frequencies from 2020-2023">
+        <div class="figure-caption">Figure 4. Monthly Call Frequencies from 2020-2023</div>
+      </div>
+
+      <p>Shifting to the weekly distribution of calls, fire stations get more calls during the week than on the weekend. More specifically, from 2 PM to 6 PM from Monday to Friday is when fire stations receive the most calls for that day (Fig 5).</p>
+      <p>Overall, from 2019-2023, there appears to be no seasonality pattern from month to month, instead, there are sudden crests and troughs throughout the year.</p>
+      <p>The call frequency can tell us how much of a workload stations are generally getting over time. However, response time will specifically tell us how well (or poorly) stations can handle these calls.</p>
+
+      <div class="figure">
+        <img src="https://github.com/briannaghinds/hfd-research/blob/main/Graphs/callsduringweek.png" alt="Weekly Call Frequencies">
+        <div class="figure-caption">Figure 5. Weekly Call Frequencies (Aggregated 2019-2023)</div>
+      </div>
+
+      <p>Figure 6 shows the median response time for each year from 2019 to 2023, with months defined on the x-axis and median response time (in minutes) on the y-axis. There is an increase in response time as the years go on; more specifically, there is a sudden rise in median response time from 2019 to 2020, which reflects the disruption fire stations experienced after COVID-19. These disruptions can be hits to their staffing levels and/or to the station's resources. Seasonally, there is a notable increase in response times during the summer months, June to August, across most of the years, connecting to the increase in call frequency in the summer months. As the year goes on, there is a consistent, gradual uptrend in response time, which indicates an increase in demand, resource shortages, or other systemic factors</p>
+
+      <div class="figure">
+        <img src="https://github.com/briannaghinds/hfd-research/blob/main/Graphs/medianresponsetime.png" alt="Median Response Time from 2019-2023">
+        <div class="figure-caption">Figure 6. Median Response Time from 2019-2023</div>
+      </div> 
+      
+      <p>While there seems to be no prominent recurring seasonal pattern at a particular period, the day of the week (weekday versus weekend), and possibly the time of day (i.e. rush hour, lunch rush, etc) can affect the response time. Throughout the year, 3 AM to 5 AM consistently houses the largest response time for that day (Fig 7). The heatmap shows the median response time of all units from 2019-2023 aggregated across a timespan (January through December for Fig 7 and Sunday through Saturday for Fig 8) and hours of the day (0 to 23). In the heatmap, the colormap to the right shows that the median response time (in minutes) ranges from ~6.60 minutes to ~8.00 minutes. From the color spread of the map, it appears that when receiving any call type, a variable such as time of day may be a bigger factor in the final response time than the month of the year. With this, if a call were to come in between 3 AM and 5 AM, we can conclude that the response time at those hours will take longer than any other time throughout the day. To solve a bottleneck like this, we can identify why stations are taking longer to respond. A possible reason is that it is around this time that stations change their shifts, possibly making the shift change process more streamlined so that the transition period doesn’t result in a longer response time. These high response times during the early morning are consistent throughout every day of the week. With a sudden transition to a lower response time at 6 AM, which is in line with when stations have completed their shift changes.</p>
+
+      <div class="figure">
+        <img src="https://github.com/briannaghinds/hfd-research/blob/main/Graphs/RT_year.png" alt="Monthly Median Response Time from 2019-2023">
+        <div class="figure-caption">Figure 7. Temporal Heatmap for Monthly Median Response Time</div>
+      </div>
+
+      <div class="figure">
+        <img src="https://github.com/briannaghinds/hfd-research/blob/main/Graphs/RT_week.png" alt="Weekly Median Response Time from 2019-2023">
+        <div class="figure-caption">Figure 8. Temporial Heatmap for Weekly Median Response Time</div>
+      </div>
+
+
       <p>This study employed a mixed-methods approach to analyze data patterns in [research domain]. The research design integrated quantitative analysis of large datasets with qualitative insights derived from focused case studies.</p>
       
       <h3>3.1 Data Collection</h3>
@@ -197,6 +243,23 @@
         <p>The concept of pattern interaction, particularly the phenomena of amplification, dampening, and transformation, represents an important advancement in understanding how these patterns operate in real-world contexts. Furthermore, the identification of key contextual factors that moderate pattern expression provides a more nuanced framework for interpreting and responding to these patterns.</p>
         <p>While limitations exist, this research establishes a foundation for future studies that can further explore the complex nature of data patterns and their implications. As the field continues to evolve, the integration of diverse methodological approaches and theoretical perspectives will be essential for developing a comprehensive understanding of these phenomena.</p>
         <p>In conclusion, this research not only advances academic knowledge in [research domain] but also offers practical insights for organizations navigating the increasingly complex data landscape of the modern environment.</p>
+    </div>
+
+    <div id="summary_findings" class="section">
+        <h2>Call Seasonalities Summary of Findings</h2>
+        <ul>
+            <li>There are no seasonal patterns tied to specific Houston events such as RodeoHouston, but there are higher call frequencies during the hot, summer months.</li>
+            <li>There is a higher call frequency during the weekday than the weekend.</li>
+            <li>The median response time for all stations has increased every year.</li>
+            <li>There seems to be a sudden peak in response time during the time stations change their shifts.</li>
+        </ul>
+       
+        <br>
+
+        <h2>Gap Analysis Summary of Findings</h2>
+        <ul>
+            <li></li>
+        </ul>
     </div>
 
     <div id="references" class="section">
