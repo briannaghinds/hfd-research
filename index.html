@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <title>Houston Fire Department</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="Graphs/huskyhead.png">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
     
     <div class="abstract-box">
       <div class="abstract-title">Abstract</div>
-      <p>The efficiency and effectiveness of emergency response systems are crucial in metropolitan areas where incidents can escalate rapidly and put lives at risk. As one of the most populous and diverse cities in the United States, Houston faces unique challenges in emergency response due to its sprawling urban landscape, complex road networks, and diverse socio-economic demographics. The Houston Fire Department (HFD), a vital component of the city’s public safety infrastructure, is tasked with providing rapid and reliable emergency response services across this expansive area. Given the increasing call volumes and the complexities introduced by urban development, it is imperative for HFD to continuously evaluate and enhance its response strategies. This project aims to bridge the gap between raw data and actionable insights by leveraging exploratory data analytics and visualization techniques. Our comprehensive analysis of HFD’s response data from 2019 to 2023 will provide a detailed examination of response trends, station performance, and the factors influencing response times. Ultimately, this study aims to support HFD in its mission to deliver timely and efficient emergency services, contributing to the overall safety and well-being of Houston’s residents</p>
+        <p>Effective emergency response is critical for public safety. This study utilized Python and SQL to clean and analyze a comprehensive dataset of fire and emergency medical service (EMS) calls within Houston, Texas. Our analysis focused on identifying potential bottlenecks in response times, particularly concerning the spatial relationship between incident locations and fire station deployment. A key finding revealed atypical delays in response times for incidents located in close proximity to certain fire stations. This counterintuitive pattern suggests the presence of underlying factors hindering timely intervention in nearby emergencies. While our current analysis identified this critical issue, further investigation requiring additional datasets, including dispatch protocols, detailed geographic and road network information, and unit deployment procedures, is necessary to fully elucidate the causes of these localized delays and inform targeted strategies for improvement.</p>
     </div>
 
     <ul class="nav-tabs">
@@ -63,14 +64,18 @@
       <h2>Research Objectives</h2>
       <p>The objectives of this project are designed to address the key operational challenges faced by the Houston Fire Department, focusing on data-driven solutions to improve response times and service delivery. These objectives include:</p>
       <ul>
-        <li><strong>Comprehensive Data Integration and Cleaning</strong>: To gather, integrate, and preprocess response data from fiscal years 2019 through 2023. This step involves consolidating disparate datasets, han	dling missing values, and standardizing variables to create a robust foundation for analysis.</li>
-        <li><strong>In-depth Exploratory Data Analysis (EDA)</strong>: To conduct a thorough EDA, identifying trends and anomalies in response times across different incident types, periods, and geographic locations.</li>
-        <li><strong>Enhanced Data Visualization</strong>: To create clear, insightful visualizations that communicate complex patterns and trends to stakeholders effectively. Tools like heat maps, bar charts, and geospatial plots will be utilized to make the data accessible and understandable for decision-makers.</li>
+        <li><strong>Comprehensive Data Integration and Cleaning</strong>: To gather, integrate, and preprocess response data from fiscal years 2019 through 2023. This step involves consolidating disparate datasets and handling missing values to create a robust foundation for analysis.</li>
+        <li><strong>In-depth Exploratory Data Analysis (EDA)</strong>: To conduct a thorough EDA, we identify trends and anomalies in response times across different incident types, periods, and geographic locations.</li>
+        <li><strong>Enhanced Data Visualization</strong>: To create clear, insightful visualizations that communicate complex patterns and trends to stakeholders effectively. Tools like heatmaps, bar charts, and geospatial plots will be utilized to make the data accessible and understandable for city council, HFD Accreditation, and stations themselves.</li>
         <li><strong>Indentfication of Operational Bottlenecks</strong>: To pinpoint specific stations, times, and incident types that are associated with longer response times. This analysis will highlight areas that require targeted interventions or resource adjustments.</li>
-        <li><strong>Actionable Recommendations</strong>: To formulate practical recommendations based on the analysis findings. This could include adjusting shift schedules during peak call times, enhancing coverage in high-demand areas, or implementing advanced traffic management systems.</li>
+        <li><strong>Actionable Recommendations</strong>: To formulate practical recommendations based on the analysis findings.</li>
     </ul>
 
-      <p>Our analysis uses two metrics to measure the Houston Fire Department's response time. First, we use the aggregate median response time of all fire stations from 2019-2023 and we also use the 90th percentile value of each station’s response time to compare to the City of Houston’s city council target response time benchmark. What we explicitly mean by “response time” is the time from when a station engine leaves the station to when it arrives at the incident. When plotting the distribution of all the response times from the dataset, the data is positively skewed (Fig 2). This means the average response time is higher than the middle response time value, skewing the distribution towards higher values. So there are longer response times (i.e. 150 minutes) pulling the mean upwards. To combat this, we will use the median to describe the “typical” value in the middle of the dataset, this gives a more accurate representation of where the outliers are.</p>
+    <br>
+    <br>
+
+      <p>Part of our analysis focuses more on the “normal” distribution of the dataset. For this, we combined five years of call data into our study. Analyzing a normal dataset over an abnormal dataset (i.e. 2020 with COVID) gives us the ability to dissect what the data is telling us knowing there are little to no surprising factors that can skew the results.</p>
+      <p>When plotting the distribution of all the response times from the dataset, the data is positively skewed (Fig 2). This means the average response time is higher than the middle response time value, skewing the distribution towards higher values. So there are longer response times (i.e. 150 minutes) pulling the mean upwards. To combat this, we will use the median to describe the “typical” value in the middle of the dataset. Our analysis uses two computed measurements to gauge the Houston Fire Department's response time. First, we use the aggregate median response time of all fire stations from 2019-2023 and we also use the aggreggated 90th percentile value of each station’s response time to compare to the City of Houston’s city council response time target. What we explicitly mean by “response time” is the time from when a station engine leaves the station to when it arrives at the incident.</p>
 
       <div class="figure">
         <img src="Graphs/reason_for_median.png" alt="Distribution of Response Times">
@@ -80,9 +85,8 @@
 
     <div id="seasonalities" class="section">
       <h2>Call Seasonalities</h2>
-      <p>Call centers get a large swarm of calls day in and day out. We wanted to identify any seasonal patterns in the dataset for both call frequency and median response time. Houston is a notable city that hosts seasonal events attracting thousands of people, such as RodeoHouston, the Chevron Houston Marathon, and the seasons of various professional sports teams. Not only that, there are everyday seasonal activities of daily living; for example, we wanted to see if there is a spike in calls and response time from the school year versus the summertime.</p>
-      <p>Identifying specific time periods where fire stations across the Houston metropolitan area are operating with an influx of calls and responding to calls slower can allow us to build an action plan to help stations mitigate the weight of the inundation.</p>
-      <p>Part of our analysis focuses more on the “normal” distribution of the dataset. For this, we combined five years of call data into our study. Analyzing a normal dataset over an abnormal dataset (i.e. 2020 with COVID) gives us the ability to dissect what the data is telling us knowing there are little to no surprising factors that can skew the results.</p>
+      <p>Call centers get a large swarm of calls day in and day out. We wanted to identify any seasonal patterns in the dataset for both call frequency and median response time. Houston is a notable city that hosts seasonal events attracting thousands of people, such as RodeoHouston, the Chevron Houston Marathon, and the seasons of city's various professional sports teams. Not only that, there are everyday seasonal activities of daily living; for example, we wanted to see if there is a spike in calls and response time from the school year versus the summertime.</p>
+      <p>Identifying specific time periods where fire stations across the Houston metropolitan area are operating with an influx of calls and responding to calls slower can allow us to build an action plan to help stations mitigate the weight of the inundation at that specific time period.</p>
 
       <div class="figure">
         <img src="Graphs/callsdistributioncurve.png" alt="Distribution of All Calls from 2019-2023">
@@ -90,7 +94,7 @@
       </div>
 
       <p>Looking directly at the raw numbers, the number of calls that come in peaks more towards the months after the middle of the year (i.e. about  July to September) than it does towards the beginning of the year (Fig 3). This can be seen more explicitly in Figure 4, where there is a habitual dip in the number of calls stations receive during February. This can be possibly tied to the lesser number of days in February than in January. The higher call counts come in from June to September, either due to increased outdoor activity and/or hotter temperatures.</p>
-      <p><i>NOTE: On February 13-17, 2021, Texas was hit with a winter storm. This caused an unpredictable influx of calls. Because of this, this specific range of data has been omitted from the dataset, causing the lower call frequency for February 2021.</i></p>
+      <p><i>NOTE: On February 13-17, 2021, Texas was hit with a winter storm. This caused an unpredictable influx of calls. Because of this, HFD omitted this specific range of data from the dataset, causing the lower call frequency for February 2021.</i></p>
       <p>The year 2023 shows the highest call frequency out of all years, especially in July and August. During this time, Houston recorded record-breaking temperatures in July (an average of 87.8 degrees) and August (an average of 102.7 degrees).</p>
       
       <div class="figure">
@@ -98,8 +102,8 @@
         <div class="figure-caption">Figure 4. Monthly Call Frequencies from 2020-2023</div>
       </div>
 
-      <p>Shifting to the weekly distribution of calls, fire stations get more calls during the week than on the weekend. More specifically, from 2 PM to 6 PM from Monday to Friday is when fire stations receive the most calls for that day (Fig 5).</p>
-      <p>Overall, from 2019-2023, there appears to be no seasonality pattern from month to month, instead, there are sudden crests and troughs throughout the year.</p>
+      <p>Shifting to the weekly distribution of calls, fire stations are getting more calls during the week than on the weekend. More specifically, from 2 PM to 6 PM from Monday to Friday is when fire stations receive the most calls for that day (Fig 5).</p>
+      <p>Overall, from 2019-2023, there appears to be no seasonality pattern from month to month, instead, there are sudden crests and troughs throughout the year, i.e. a peak during summertime and dips in the early months of the year.</p>
       <p>The call frequency can tell us how much of a workload stations are generally getting over time. However, response time will specifically tell us how well (or poorly) stations can handle these calls.</p>
 
       <div class="figure">
@@ -131,7 +135,8 @@
       <h2>Gap Analysis</h2>
       <p>With the Houston Fire Department being one of the largest in the United States, we wanted to identify and analyze any possible bottlenecks at specific stations that might negatively contribute to HFD’s overall response time analysis.</p>
       <p>To effectively pinpoint potential bottlenecks within the Houston Fire Department's response times, we've moved beyond median values and focused on percentile analysis. Percentiles show a bigger picture by showing the distribution of response times. For example, the 90th percentile reveals the time within which 90% of calls are responded to, highlighting the upper range of typical response times and flagging stations where responses are consistently slower. By examining these higher percentiles, we can identify stations where a significant portion of responses exceed expected durations, signaling potential areas for improvement and resource optimization.</p>
-      <p>To analyze and access the upper range of typical response times, more specifically the 90th percentile response time for each station, Figure 9 and Figure 10 show the stations that are ranked from the longest 90th percentile response time on the left to the shortest 90th percentile response time on the right, based on fire calls and EMS/rescue calls. This metric represents the response time that was met or exceeded in only 10% of incidents. The red line in Figure 9 represents the City of Houston’s 90th percentile response time benchmark, specifically for fire calls. The green line in Figure 10 represents the City of Houston’s 90th percentile response time for EMS and rescue calls. These benchmarks are set by the city budget and services as a proxy of community expectations (Table 1).</p>
+      <p>To analyze and access the upper range of typical response times, more specifically the aggregate 90th percentile response time for each station, Figure 9 and Figure 10 show the stations that are ranked from the longest 90th percentile response time on the left to the shortest 90th percentile response time on the right, based on fire calls and EMS/rescue calls. This metric represents the response time that was met or exceeded in only 10% of incidents. The red line in Figure 9 represents the City of Houston’s 90th percentile response time benchmark, specifically for fire calls. The green line in Figure 10 represents the City of Houston’s 90th percentile response time for EMS and rescue calls. These benchmarks are set by the city budget and services as a proxy of community expectations (Table 1).</p>
+      <p>The aggregate was used for the 90th percentile metric so we can analyze the <i>overall</i> trends and patterns, this route reduces noise and summarizes group behavior.</p>
       
       <div class="figure">
         <img src="Graphs/FY2025.png" alt="Houston FY2025 Benchmarks">
@@ -224,8 +229,7 @@
 
         <h2>Gap Analysis Summary of Findings</h2>
         <ul>
-            <li>About 52% of the stations are above the City of Houston’s Fiscal Year 2025 targeted response time for fire calls.</li>
-            <li>About 15% of stations are above the City of Houston’s Fiscal Year 2025 targeted response time for EMS/Rescue calls of 12.9 minutes.</li>
+            <li>Based on FY2025 target, 52% of stations exceed the city council's benchmark for fire calls, while 15% exceed it for EMS calls.</li>
             <li>Station 65 stands out as the station with the highest values across both graphs, signifying the slowest response times and the most significant performance challenges.</li>
         </ul>
 
